@@ -14,6 +14,37 @@ The `changeLocale` function searches for the Ember application instance in the g
 
 3. **Invoke `changeLocale`**: To change the application's locale, simply call `changeLocale(newLocale)` from anywhere in your application, where `newLocale` is the locale identifier (e.g., "en-US", "fr-FR").
 
-   ```javascript
-   // Example:
-   changeLocale('en-US'); // Changes the locale to English (US)
+    ```javascript
+    // Example:
+    changeLocale('en-US'); // Changes the locale to English (US)
+    ```
+
+4. **Global Access**: The `changeLocale` function is attached to the `window` object, making it accessible globally throughout your application.
+
+### Adding a Static Locale Change Snippet
+
+To programmatically attempt to change the locale using a static snippet, you can include the following JavaScript code. This snippet checks if the `changeLocale` function is available and then attempts to change the locale to Esperanto ('eo') as an example.
+
+    ```javascript
+    // Ensure the changeLocale function is available on the window object
+    if (typeof window.changeLocale === 'function') {
+        // Call the changeLocale function with the desired new locale
+        window.changeLocale('eo'); // Example: Change the locale to Esperanto
+        console.log('Attempting to change the locale to eo.');
+    } else {
+        // If changeLocale is not a function or not defined, log an error
+        console.error('changeLocale function is not defined. Ensure the defining snippet has been executed.');
+    }
+    ```
+
+Ensure to replace `'eo'` with the actual locale you wish to set for your application.
+
+### Troubleshooting
+
+- **Intl Service Not Found**: If you encounter an error stating that the Intl service is not found, make sure that the `ember-intl` addon is properly installed and configured in your Ember application.
+
+- **Ember Application Instance Not Found**: This error may occur if the script is executed before the Ember application has been fully initialized. Ensure that your script runs after the Ember application is available in the window context.
+
+### Conclusion
+
+This script provides a straightforward method for changing the locale of an Ember application dynamically. It leverages the Ember application's architecture and the `intl` service to achieve seamless language switching, enhancing the user experience in multilingual applications.
