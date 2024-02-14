@@ -1,2 +1,6 @@
 # lingoport-ember-tools-localmanager
- Google snippet to change current local in ember
+ Google snippet to change current local in ember.
+
+ Example Use : 
+ 
+ changeLocale('eo');
